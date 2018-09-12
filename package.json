@@ -5,7 +5,8 @@
   "main": "bundle.js",
   "scripts": {
     "build": "webpack --watch",
-    "start": "nodemon ./server/server.js --watch"
+    "start": "nodemon ./server/server.js --watch",
+    "seed": "node ./database/seed.js"
   },
   "keywords": [],
   "author": "",
@@ -23,7 +24,14 @@
     "mysql": "^2.16.0",
     "node-mysql": "^0.4.2",
     "react": "^16.2.0",
-    "react-dom": "^16.2.0",
-    "webpack": "^3.11.0"
+    "react-dom": "^16.2.0"
+  },
+  "devDependencies": {
+    "eslint": "^5.5.0",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-jsx-a11y": "^6.1.1",
+    "eslint-plugin-react": "^7.11.1",
+    "webpack": "^3.12.0"
   }
 }
