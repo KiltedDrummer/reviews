@@ -1,18 +1,51 @@
 const express = require('express');
 const path = require('path');
 const db = require('../database/index.js');
+const bodyParser = require('body-parser');
 
 const app = express();
 
-app.use(express.static(path.join(__dirname, '../public')));
 // serve up static files inside public
+app.use(express.static(path.join(__dirname, '../public')));
 
-app.get('/reviews', (req, res) => {
-  console.log('TYPEOF', typeof req);
-  db.getReviews((results) => {
+app.get('/reviews/:id', bodyParser.json(), (req, res) => {
+  //depending on this id the index.js will do a different query
+  var idNumber = parseInt(req.params.id)
+  var min = (idNumber * 10) - 9
+  var max = idNumber * 10
+  db.getSpecificReviews(min, max, (results) => {
     res.send(results);
   });
 });
 
-// TODO: function that will take in an id, and a callback
+// app.get('/reviews/', bodyParser.json(), (req, res) => {
+//   db.getReviews((results) => {
+//     res.send(results);
+//   });
+// });
+
+app.get('/reviews/queried/:query', bodyParser.json(), (req, res) => {
+
+  
+  db.getFilteredReviews(req.params.query, (results) => {
+    res.send(results);
+  });
+});
+
+app.get('/reviews/queried/:query/:id', bodyParser.json(), (req, res) => {
+  var idNumber = parseInt(req.params.id)
+  var max = idNumber * 10; //min and max are the id ranges... 
+  var min = max - 9; //offset
+  var query = req.params.query;
+
+  db.getSearchReviews(min, max, query, (results) => {
+    res.send(results);
+  });
+
+
+});
+
+
+//visibility none
+
 app.listen(3001, () => console.log('listening on port 3001...'));
