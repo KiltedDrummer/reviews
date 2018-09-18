@@ -13,15 +13,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-<<<<<<< HEAD
-<<<<<<< HEAD
     "babel-core": "^7.0.0-bridge.0",
-=======
-    "babel-core": "^7.0.0",
->>>>>>> 7943943eeb2bdfbd164202774ee5a2a23403ae37
-=======
-    "babel-core": "^7.0.0",
->>>>>>> 7943943eeb2bdfbd164202774ee5a2a23403ae37
     "babel-loader": "^7.1.2",
     "babel-preset-env": "^1.6.1",
     "babel-preset-es2015": "^6.24.1",
@@ -63,14 +55,8 @@
     "setupFiles": [
       "./setupTests.js"
     ]
-<<<<<<< HEAD
-<<<<<<< HEAD
   },
   "resolutions": {
     "babel-core": "7.0.0-bridge.0"
-=======
->>>>>>> 7943943eeb2bdfbd164202774ee5a2a23403ae37
-=======
->>>>>>> 7943943eeb2bdfbd164202774ee5a2a23403ae37
   }
 }
