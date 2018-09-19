@@ -16,6 +16,7 @@ class App extends React.Component {
     displayedReviews:[],
     searchMode: false,
     query:'',
+    currentPage:1, //default
     };
   }
 
@@ -40,6 +41,7 @@ class App extends React.Component {
       .then(response => response.json())
       .then((data) => {
         this.setState({data:data})
+        this.setState({currentPage:e})
       })
     }
     else { //else you are in searchMode 
@@ -55,13 +57,14 @@ class App extends React.Component {
     //the searchMode route will return based off not only 
     //the page # but also the query 
     //a combo between :id and :query 
+    
    
   }
 
   handleQueryChange(query) { //function that search mode (true) uses 
     //gets called the moment you press the "enter" key to search 
     console.log(query)
-
+    
     this.setState({query: query});
     //you have the query after pressing enter 
     //now you want to fetch the filtered data and pass 
@@ -72,6 +75,7 @@ class App extends React.Component {
     .then(data => {
       console.log(data)
       this.setState({filteredReviews: data})
+      console.log("props",this.state)
     })
 
     //want the default display to be page 1 of the below 
@@ -104,6 +108,7 @@ class App extends React.Component {
       var dataToPass = this.state.data;
     } else {    //else if the search mode is true, then pass down filtered reviews instead of data  
       var dataToPass = this.state.displayedReviews; 
+      
     }
     return (
       <div className="reviewBox">
@@ -122,7 +127,8 @@ class App extends React.Component {
         <div onClick={this.handlePageChange.bind(this)}></div>
         <ReviewList data={dataToPass}> 
         </ReviewList>
-        <Pagination searchMode={this.state.searchMode} length={this.state.filteredReviews.length} handlePageChange={this.handlePageChange.bind(this)}/>
+        <Pagination currentPage={this.state.currentPage} 
+        searchMode={this.state.searchMode} length={this.state.filteredReviews.length} handlePageChange={this.handlePageChange.bind(this)}/>
         
       </div>
     )
