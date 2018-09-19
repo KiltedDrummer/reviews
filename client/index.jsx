@@ -6,7 +6,7 @@ const fetch = require('node-fetch');
 
 
 class App extends React.Component {
-  constructor(props) {
+  constructor(props) { //id came in as props 
     super(props);
     this.state = {
     homeId: '100', //DEFAULT 100 (Same reviews for any house)
@@ -22,6 +22,9 @@ class App extends React.Component {
   }
 
  fetcher(){
+    if(this.props.homeId !== undefined) {
+      this.setState({homeId: this.props.homeId})
+    }
     fetch('http://localhost:3001/homes/' + this.state.homeId + '/reviews/1')
     .then(response => response.json())
     .then((data) => {
