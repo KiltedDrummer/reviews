@@ -14,8 +14,9 @@ app.use(function(req, res, next) {
   next();
  });
 
-app.get('/reviews/:id', bodyParser.json(), (req, res) => {
+app.get('/homes/:homeId/reviews/:id', bodyParser.json(), (req, res) => {
   //depending on this id the index.js will do a different query
+  console.log(req.params)
   var idNumber = parseInt(req.params.id)
   var min = (idNumber * 10) - 9
   var max = idNumber * 10

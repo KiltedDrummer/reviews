@@ -9,6 +9,7 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+    homeId: '100', //DEFAULT 100 (Same reviews for any house)
     data: [],
     allReviews: [],
     filteredReviews:[],
@@ -21,7 +22,7 @@ class App extends React.Component {
   }
 
  fetcher(){
-    fetch('http://localhost:3001/reviews/1')
+    fetch('http://localhost:3001/homes/' + this.state.homeId + '/reviews/1')
     .then(response => response.json())
     .then((data) => {
       this.setState({data:data})
@@ -31,13 +32,12 @@ class App extends React.Component {
 
   componentDidMount() {
       this.fetcher();
-
   }
 
   handlePageChange(e, searchM) {  
 
   if(!searchM) {
-   fetch('http://localhost:3001/reviews/' + e) //simple search based off all reviews
+   fetch('http://localhost:3001/homes/'+ this.state.homeId +'/reviews/' + e) //simple search based off all reviews
       .then(response => response.json())
       .then((data) => {
         this.setState({data:data})
