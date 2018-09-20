@@ -4,9 +4,13 @@ import ReviewList from './reviewList.jsx';
 import Pagination from './pagination.jsx';
 const fetch = require('node-fetch');
 
+import styled from 'styled-components';
 
+const Container = styled.div`
+  position: relative;
+`
 class App extends React.Component {
-  constructor(props) { //id came in as props 
+  constructor(props) {
     super(props);
     this.state = {
     homeId: '100', //DEFAULT 100 (Same reviews for any house)
@@ -18,6 +22,9 @@ class App extends React.Component {
     searchMode: false,
     query:'',
     currentPage:1, //default
+    pages:[1,2,3,4,5] 
+    //default (no search) eventually, I will make this render on comp did mount
+    //based off the reviews from a specific house
     };
   }
 
@@ -47,49 +54,68 @@ class App extends React.Component {
         this.setState({currentPage:e})
       })
     }
-    else { //else you are in searchMode 
+    else { //else you are in searchMode and return a new array with the new pages then change state of pages
       console.log("searchM", this.state.query)
       //page change fetch should include the query and the id
       fetch('http://localhost:3001/reviews/queried/' + this.state.query + "/" + e) //simple search based off all reviews
       .then(response => response.json())
       .then((data) => {
+        console.log(data)
         this.setState({displayedReviews:data})
       })
     }
-
     //the searchMode route will return based off not only 
     //the page # but also the query 
     //a combo between :id and :query 
-    
-   
   }
 
-  handleQueryChange(query) { //function that search mode (true) uses 
+  handleQueryChange(query) { 
     //gets called the moment you press the "enter" key to search 
+    //needs to pass down new page numbers to pagination through props (state change trickle down)
     console.log(query)
-    
-    this.setState({query: query});
-    //you have the query after pressing enter 
-    //now you want to fetch the filtered data and pass 
-    //that down to the reviewList 
-    //this function should also contain a number for the page...
-    fetch('http://localhost:3001/reviews/queried/' + query ) //gets the page count
+    this.setState({query:query})
+
+    fetch('http://localhost:3001/reviews/queried/' + query ) //gets the pageArray (all under query)
     .then(response => response.json())
     .then(data => {
       console.log(data)
-      this.setState({filteredReviews: data})
-      console.log("props",this.state)
+      if(data.length <= 5) { 
+        console.log("here")
+        var newPageArray = [1];
+      } else if(data.length % 5 === 0) {
+
+        var newPageArray = [];
+        console.log("hree")
+        for(var i = 1; i < 5; i++) {
+          newPageArray.push(i);
+        }
+      } else {
+        var newPageArray = [];
+        console.log("here")
+        var limit = Math.ceil(data.length/5) + 1;
+        if(limit > 5) {
+          limit = 5
+        }
+        for(var i = 1; i < limit; i++) {
+          newPageArray.push(i)
+        }
+      }
+        console.log("newPages", newPageArray)
+      this.setState({
+        pages: newPageArray,
+        filteredReviews:data})
+    
     })
 
-    //want the default display to be page 1 of the below 
+    //want the default display to be page 1 of the queried reviews (done below)
 
-    fetch('http://localhost:3001/reviews/queried/' + query + "/" + 1) //default 
+    fetch('http://localhost:3001/reviews/queried/' + query + "/" + 1) 
       .then(response => response.json())
       .then(data => {
-        console.log("recieved", data)
         this.setState({
           displayedReviews: data,
-          searchMode:true})
+          searchMode:true,
+        })
       })
       //will change state so that we are now in search mode 
       //and the pages will be rendered based on the filtered data
@@ -114,7 +140,7 @@ class App extends React.Component {
       
     }
     return (
-      <div className="reviewBox">
+      <Container className="reviewBox">
         <br/>
         <br/>
         <br/>
@@ -130,10 +156,10 @@ class App extends React.Component {
         <div onClick={this.handlePageChange.bind(this)}></div>
         <ReviewList data={dataToPass}> 
         </ReviewList>
-        <Pagination currentPage={this.state.currentPage} 
-        searchMode={this.state.searchMode} length={this.state.filteredReviews.length} handlePageChange={this.handlePageChange.bind(this)}/>
+        <Pagination currentPage={this.state.currentPage} pageArray={this.state.pages}
+        searchMode={this.state.searchMode} handlePageChange={this.handlePageChange.bind(this)}/>
         
-      </div>
+      </Container>
     )
    }
 

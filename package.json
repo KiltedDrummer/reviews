@@ -27,10 +27,10 @@
     "mysql": "^2.16.0",
     "node-fetch": "^2.2.0",
     "node-mysql": "^0.4.2",
-    "react": "^16.2.0",
+    "react": "^16.5.0",
     "react-dom": "^16.2.0",
     "style-loader": "^0.23.0",
-    "styled-components": "^3.4.6",
+    "styled-components": "^2.0.0",
     "supertest": "^3.3.0",
     "url-loader": "^1.1.1"
   },

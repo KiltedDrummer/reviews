@@ -72,14 +72,7 @@ class Pagination extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            pages:[], //default for not searchM is [1,2,3,4,5]
-            //whenever someone queries, it should set this state
-            //could come in as props
-
-            //want this to come in from index.jsx
-            //default would be the [1,2,3,4,5]
-            //but if its coming in after a query it would need to feed in the 
-            //appropriate array
+            pages: [],
         }
     }
 
@@ -101,14 +94,17 @@ handleForwardClick(){
         this.props.handlePageChange(this.props.currentPage + 1, this.props.searchMode)
     }
 }
-componentWillMount(){ 
-    console.log("props", this.props)
-    if(!this.props.searchMode) { 
-        //simply telling this component how many 
-        //pages it will need to render 
-    this.setState({pages:[1,2,3,4,5]})
+componentDidMount(){ 
+    console.log(this.props)
+    this.setState({pages:this.props.pageArray})
+}
+
+componentDidUpdate(prevProps) {
+    // Typical usage (don't forget to compare props):
+    if (this.props.pageArray !== prevProps.pageArray) {
+      this.setState({pages:this.props.pageArray});
     }
-}  
+  }
   render() {
     return (
       <div>

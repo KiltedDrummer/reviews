@@ -6,7 +6,7 @@ const bodyParser = require('body-parser');
 const app = express();
 
 // serve up static files inside public
-app.use(express.static(path.join(__dirname, '../public')));
+app.use('/homes/:homeId', express.static(path.join(__dirname, '../public')));
 
 app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
