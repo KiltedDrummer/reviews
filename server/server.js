@@ -25,12 +25,6 @@ app.get('/homes/:homeId/reviews/:id', bodyParser.json(), (req, res) => {
   });
 });
 
-// app.get('/reviews/', bodyParser.json(), (req, res) => {
-//   db.getReviews((results) => {
-//     res.send(results);
-//   });
-// });
-
 app.get('/reviews/queried/:query', bodyParser.json(), (req, res) => {
 
   

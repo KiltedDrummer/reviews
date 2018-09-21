@@ -23,8 +23,6 @@ class App extends React.Component {
     query:'',
     currentPage:1, //default
     pages:[1,2,3,4,5] 
-    //default (no search) eventually, I will make this render on comp did mount
-    //based off the reviews from a specific house
     };
   }
 
@@ -32,8 +30,8 @@ class App extends React.Component {
     if(this.props.homeId !== undefined) {
       this.setState({homeId: this.props.homeId})
     }
-    fetch('http://localhost:3001/homes/' + this.state.homeId + '/reviews/1')
-    .then(response => response.json())
+    fetch('/homes/' + this.state.homeId + '/reviews/1') //will make a request to localhost:3000/homes/100/reviews/1
+    .then(response => response.json()) 
     .then((data) => {
       this.setState({data:data})
       this.setState({firstPage:data})
@@ -45,23 +43,33 @@ class App extends React.Component {
   }
 
   handlePageChange(e, searchM) {  
+  //everytime you change the page, you send a request to the DB 
+  //use that to know how many pages to render... 
+  //change the state of the displayed pages 
+  //
+  //this.setState({pages:newPages})
 
   if(!searchM) {
-   fetch('http://localhost:3001/homes/'+ this.state.homeId +'/reviews/' + e) //simple search based off all reviews
+   fetch('/homes/'+ this.state.homeId +'/reviews/' + e) //simple search based off all reviews
       .then(response => response.json())
       .then((data) => {
         this.setState({data:data})
         this.setState({currentPage:e})
+        var newPages = this.state.pages.map((page)=>{return page + 1})
+        this.setState({pages:newPages})
       })
     }
     else { //else you are in searchMode and return a new array with the new pages then change state of pages
       console.log("searchM", this.state.query)
       //page change fetch should include the query and the id
-      fetch('http://localhost:3001/reviews/queried/' + this.state.query + "/" + e) //simple search based off all reviews
+      fetch('/reviews/queried/' + this.state.query + "/" + e) //simple search based off all reviews
       .then(response => response.json())
       .then((data) => {
         console.log(data)
-        this.setState({displayedReviews:data})
+        var newPage = this.state.currentPage + 1; 
+        this.setState({
+        displayedReviews:data,
+        currentPage: newPage })
       })
     }
     //the searchMode route will return based off not only 
@@ -75,7 +83,7 @@ class App extends React.Component {
     console.log(query)
     this.setState({query:query})
 
-    fetch('http://localhost:3001/reviews/queried/' + query ) //gets the pageArray (all under query)
+    fetch('/reviews/queried/' + query ) //gets the pageArray (all under query)
     .then(response => response.json())
     .then(data => {
       console.log(data)
@@ -102,14 +110,14 @@ class App extends React.Component {
       }
         console.log("newPages", newPageArray)
       this.setState({
-        pages: newPageArray,
+        pages: newPageArray, 
         filteredReviews:data})
     
     })
 
     //want the default display to be page 1 of the queried reviews (done below)
 
-    fetch('http://localhost:3001/reviews/queried/' + query + "/" + 1) 
+    fetch('/reviews/queried/' + query + "/" + 1) 
       .then(response => response.json())
       .then(data => {
         this.setState({

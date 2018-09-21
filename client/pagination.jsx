@@ -80,15 +80,15 @@ handleForwardClick(){
     //needs to tell handlePageChange the appropriate things 
     
     if(!this.props.searchMode) {
-        var newPages = this.state.pages.map((page)=>{return page + 1})
+        //var newPages = this.state.pages.map((page)=>{return page + 1})
         console.log(newPages);
-        this.setState({pages:newPages})
+        //this.setState({pages:newPages})
         this.props.handlePageChange(this.props.currentPage + 1, this.props.searchMode) //we need to know what page we're on...
 
     } 
     
     else {
-        console.log("we")
+        console.log("we") //need to know the limit of the pages...
         var newPages = this.state.pages.map((page)=>{return page + 1})
         this.setState({pages:newPages})
         this.props.handlePageChange(this.props.currentPage + 1, this.props.searchMode)

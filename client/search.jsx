@@ -20,13 +20,13 @@ const Bar = styled.input`
     
 `
 const Title = styled.div`
-    color: #484848
+    color: #484848;
     font-size: 24px;
-    font-weight: 550
+    font-weight: 550;
     font-family: Circular,-apple-system,BlinkMacSystemFont,Roboto,Helvetica Neue,sans-serif;
     margin-left: 41px;
-    padding: 0px ;
-    display: inline ;
+    padding: 0px;
+    display: inline;
     position:absolute;
     top:27px;
 `
@@ -150,7 +150,7 @@ const Checkin = styled.div`
     top: 150px;
     font-size: 19px;
     line-height: 22px;
-    letter-spacing: normal 
+    letter-spacing: normal; 
     font-family: Circular,-apple-system,BlinkMacSystemFont,Roboto,Helvetica Neue,sans-serif;
     color: #484848;
     margin-left: 340px;
@@ -167,7 +167,7 @@ class Search extends React.Component {
       this.handleSearchChange = this.handleSearchChange.bind(this);
     }
 
-handleKeyPress(e){
+handleKeyPress(e){ //when someone presses enter it will send a query
     if(e.key ==="Enter") {
         this.props.handleQueryChange(this.state.queryString)
     }
