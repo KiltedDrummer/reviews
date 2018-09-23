@@ -5,7 +5,7 @@
   "main": "bundle.js",
   "scripts": {
     "build": "webpack --watch",
-    "start": "nodemon ./server/server.js --watch",
+    "start": "node ./server.js --watch",
     "seed": "node ./database/seed.js",
     "test": "jest"
   },
@@ -20,6 +20,7 @@
     "babel-loader": "^8.0.0-beta.6",
     "body-parser": "^1.18.3",
     "css-loader": "^1.0.0",
+    "dotenv": "^6.0.0",
     "express": "^4.16.2",
     "faker": "^4.1.0",
     "fs": "0.0.1-security",
@@ -27,6 +28,7 @@
     "mysql": "^2.16.0",
     "node-fetch": "^2.2.0",
     "node-mysql": "^0.4.2",
+    "path": "^0.12.7",
     "react": "^16.5.0",
     "react-dom": "^16.2.0",
     "style-loader": "^0.23.0",

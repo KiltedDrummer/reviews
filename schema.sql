@@ -1,7 +1,7 @@
 -- the actual schema for the DB
 -- do not drop this DB. Only create it if it exists
--- DROP DATABASE IF EXISTS reviews ;
-DROP DATABASE REVIEWS;
+DROP DATABASE IF EXISTS reviews ;
+-- DROP DATABASE REVIEWS;
 CREATE DATABASE IF NOT EXISTS reviews;
 
 USE reviews;
