@@ -32,26 +32,26 @@ An `nvmrc` file is included if using [nvm](https://github.com/creationix/nvm).
 The following endpoints are used for CRUD operations
 
 - Create
-    `/homes/:homeId`
-    Used for a post request adding a new review to specific home
+  > `/homes/:homeId`
+  > Used for a post request adding a new review to specific home
 
 - Read
-    `/homes/:homeId/reviews/:id`
-    Used for to get reviews for a specific page `:id`
+  > `/homes/:homeId/reviews/:id`
+  > Used for to get reviews for a specific page `:id`
 
-    `/reviews/queried/:query`
-    Used for to get reviews matching a specific search `:query`
+  > `/reviews/queried/:query`
+  > Used for to get reviews matching a specific search `:query`
 
-    `/reviews/queried/:query/:id`
-    Used for to get reviews matching a specific search `:query`, for a specified page `:id`
+  > `/reviews/queried/:query/:id`
+  > Used for to get reviews matching a specific search `:query`, for a specified page `:id`
 
 - Update
-    `/homes/:homeId/reviews/:reviewId`
-    Used for a put request changing the review text for a specific review
+  > `/homes/:homeId/reviews/:reviewId`
+  > Used for a put request changing the review text for a specific review
 
 - Delete
-    `/homes/:homeId/reviews/:reviewId`
-    Used for a delete request removing a specific review
+  > `/homes/:homeId/reviews/:reviewId`
+  > Used for a delete request removing a specific review
 ## Development
 
 ### Installing Dependencies
