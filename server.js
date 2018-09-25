@@ -31,7 +31,7 @@ app.get('/reviews/queried/:query', bodyParser.json(), (req, res) => {
   });
 });
 
-app.post('/homes/:homeId/reviews', bodyParser.json(), (req, res) => {
+app.post('/homes/:homeId', bodyParser.json(), (req, res) => {
   console.log(req.data);
   db.addReview(req.data, (results) => {
     console.log('Posted', results);
