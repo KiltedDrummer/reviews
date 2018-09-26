@@ -5,7 +5,7 @@
   "main": "bundle.js",
   "scripts": {
     "build": "webpack --watch",
-    "start": "node ./server.js --watch",
+    "start": "nodemon ./server.js",
     "seed": "node ./database/seed.js",
     "test": "jest"
   },
@@ -48,6 +48,7 @@
     "eslint-plugin-react": "^7.11.1",
     "file-loader": "^2.0.0",
     "jest": "^23.6.0",
+    "nodemon": "^1.18.4",
     "webpack": "^4.17.2",
     "webpack-cli": "^3.1.0"
   },
