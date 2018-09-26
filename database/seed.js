@@ -1,6 +1,6 @@
-const connection = require('./index.js')
+const connection = require('./index.js');
 
-const fakeReviewText = require('./fakeReviewText');
+const fakeReviewText = require('./fakeReviewText.js');
 
 
 const reviewArray = fakeReviewText.reviewTextArray;
@@ -16,7 +16,7 @@ const fillReviewsTable = () => {
         } else {
           console.log('success');
         }
-      },
+      }
     );
   });
 };
