@@ -13,33 +13,42 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-    homeId: '100', //DEFAULT 100 (Same reviews for any house)
-    data: [],
-    allReviews: [],
-    filteredReviews:[],
-    firstPage:[],
-    displayedReviews:[],
-    searchMode: false,
-    query:'',
-    currentPage:1, //default
-    pages:[1,2,3,4,5] 
+      homeId: '100', // DEFAULT 100 (Same reviews for any house)
+      data: [],
+      allReviews: [],
+      filteredReviews: [],
+      firstPage: [],
+      displayedReviews:[],
+      searchMode: false,
+      query: '',
+      currentPage: 1, // default
+      pages: [1, 2, 3, 4, 5],
     };
   }
 
- fetcher(){
-    if(this.props.homeId !== undefined) {
-      this.setState({homeId: this.props.homeId})
-    }
-    fetch('/homes/' + this.state.homeId + '/reviews/1') //will make a request to localhost:3000/homes/100/reviews/1
-    .then(response => response.json()) 
-    .then((data) => {
-      this.setState({data:data})
-      this.setState({firstPage:data})
-    })
-  }
 
   componentDidMount() {
-      this.fetcher();
+    const pullListing = () => {
+      let path = window.location.pathname;
+      path = path.substr(1);
+      const end = path.substr(path.indexOf('/'));
+      return end.slice(1, end.length - 1);
+    };
+
+    const listing = pullListing();
+
+    const fetcher = () => {
+      fetch(`/homes/${listing}/reviews/1`) //will make a request to localhost:3000/homes/100/reviews/1
+        .then(response => response.json())
+        .then((data) => {
+          console.log('FETCHER', data);
+          this.setState({ data });
+          this.setState({ firstPage: data });
+          this.setState({ homeId: listing });
+        });
+    };
+
+    fetcher();
   }
 
   handlePageChange(e, searchM) {  
@@ -53,19 +62,20 @@ class App extends React.Component {
    fetch('/homes/'+ this.state.homeId +'/reviews/' + e) //simple search based off all reviews
       .then(response => response.json())
       .then((data) => {
+        console.log('!searchM', data);
+
         this.setState({data:data})
         this.setState({currentPage:e})
         var newPages = this.state.pages.map((page)=>{return page + 1})
         this.setState({pages:newPages})
       })
-    }
-    else { //else you are in searchMode and return a new array with the new pages then change state of pages
+    } else { //else you are in searchMode and return a new array with the new pages then change state of pages
       console.log("searchM", this.state.query)
       //page change fetch should include the query and the id
       fetch('/reviews/queried/' + this.state.query + "/" + e) //simple search based off all reviews
       .then(response => response.json())
       .then((data) => {
-        console.log(data)
+        console.log('searchM', data);
         var newPage = this.state.currentPage + 1; 
         this.setState({
         displayedReviews:data,
@@ -85,21 +95,21 @@ class App extends React.Component {
 
     fetch('/reviews/queried/' + query ) //gets the pageArray (all under query)
     .then(response => response.json())
-    .then(data => {
-      console.log(data)
+    .then((data) => {
+      console.log('QUERIED', data);
       if(data.length <= 5) { 
-        console.log("here")
+        console.log("<=5 here")
         var newPageArray = [1];
       } else if(data.length % 5 === 0) {
 
         var newPageArray = [];
-        console.log("hree")
+        console.log("%5=0 here")
         for(var i = 1; i < 5; i++) {
           newPageArray.push(i);
         }
       } else {
         var newPageArray = [];
-        console.log("here")
+        console.log("else - here")
         var limit = Math.ceil(data.length/5) + 1;
         if(limit > 5) {
           limit = 5
