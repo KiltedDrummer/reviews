@@ -1,4 +1,17 @@
 
+/*
+********************************************************************************
+********************************************************************************
+*****                                                                      *****
+*****                    Generated From schemaGen.js                       *****
+*****             Creates a master table with 1000 partitions              *****
+*****                                                                      *****
+********************************************************************************
+********************************************************************************
+*/
+
+
+
 CREATE TABLE public.master_04
 (
     id bigint NOT NULL,
@@ -32,13 +45,13 @@ ALTER TABLE public.master_01
 
   
 
-    CREATE TABLE "public.3_reviews" PARTITION OF public.master_04
-    FOR VALUES FROM ('30001') TO ('40001');
+    CREATE TABLE "public.2_reviews" PARTITION OF public.master_04
+    FOR VALUES FROM ('20001') TO ('30001');
 
   
 
-    CREATE TABLE "public.2_reviews" PARTITION OF public.master_04
-    FOR VALUES FROM ('20001') TO ('30001');
+    CREATE TABLE "public.3_reviews" PARTITION OF public.master_04
+    FOR VALUES FROM ('30001') TO ('40001');
 
   
 
@@ -1362,6 +1375,11 @@ ALTER TABLE public.master_01
 
   
 
+    CREATE TABLE "public.268_reviews" PARTITION OF public.master_04
+    FOR VALUES FROM ('2680001') TO ('2690001');
+
+  
+
     CREATE TABLE "public.269_reviews" PARTITION OF public.master_04
     FOR VALUES FROM ('2690001') TO ('2700001');
 
@@ -1372,23 +1390,18 @@ ALTER TABLE public.master_01
 
   
 
-    CREATE TABLE "public.268_reviews" PARTITION OF public.master_04
-    FOR VALUES FROM ('2680001') TO ('2690001');
-
-  
-
     CREATE TABLE "public.271_reviews" PARTITION OF public.master_04
     FOR VALUES FROM ('2710001') TO ('2720001');
 
   
 
-    CREATE TABLE "public.272_reviews" PARTITION OF public.master_04
-    FOR VALUES FROM ('2720001') TO ('2730001');
+    CREATE TABLE "public.273_reviews" PARTITION OF public.master_04
+    FOR VALUES FROM ('2730001') TO ('2740001');
 
   
 
-    CREATE TABLE "public.273_reviews" PARTITION OF public.master_04
-    FOR VALUES FROM ('2730001') TO ('2740001');
+    CREATE TABLE "public.272_reviews" PARTITION OF public.master_04
+    FOR VALUES FROM ('2720001') TO ('2730001');
 
   
 
@@ -1417,13 +1430,13 @@ ALTER TABLE public.master_01
 
   
 
-    CREATE TABLE "public.280_reviews" PARTITION OF public.master_04
-    FOR VALUES FROM ('2800001') TO ('2810001');
+    CREATE TABLE "public.279_reviews" PARTITION OF public.master_04
+    FOR VALUES FROM ('2790001') TO ('2800001');
 
   
 
-    CREATE TABLE "public.279_reviews" PARTITION OF public.master_04
-    FOR VALUES FROM ('2790001') TO ('2800001');
+    CREATE TABLE "public.280_reviews" PARTITION OF public.master_04
+    FOR VALUES FROM ('2800001') TO ('2810001');
 
   
 
@@ -1792,13 +1805,13 @@ ALTER TABLE public.master_01
 
   
 
-    CREATE TABLE "public.354_reviews" PARTITION OF public.master_04
-    FOR VALUES FROM ('3540001') TO ('3550001');
+    CREATE TABLE "public.355_reviews" PARTITION OF public.master_04
+    FOR VALUES FROM ('3550001') TO ('3560001');
 
   
 
-    CREATE TABLE "public.355_reviews" PARTITION OF public.master_04
-    FOR VALUES FROM ('3550001') TO ('3560001');
+    CREATE TABLE "public.354_reviews" PARTITION OF public.master_04
+    FOR VALUES FROM ('3540001') TO ('3550001');
 
   
 
@@ -1987,23 +2000,23 @@ ALTER TABLE public.master_01
 
   
 
-    CREATE TABLE "public.393_reviews" PARTITION OF public.master_04
-    FOR VALUES FROM ('3930001') TO ('3940001');
-
-  
-
     CREATE TABLE "public.394_reviews" PARTITION OF public.master_04
     FOR VALUES FROM ('3940001') TO ('3950001');
 
   
 
-    CREATE TABLE "public.396_reviews" PARTITION OF public.master_04
-    FOR VALUES FROM ('3960001') TO ('3970001');
+    CREATE TABLE "public.393_reviews" PARTITION OF public.master_04
+    FOR VALUES FROM ('3930001') TO ('3940001');
 
   
 
     CREATE TABLE "public.395_reviews" PARTITION OF public.master_04
     FOR VALUES FROM ('3950001') TO ('3960001');
+
+  
+
+    CREATE TABLE "public.396_reviews" PARTITION OF public.master_04
+    FOR VALUES FROM ('3960001') TO ('3970001');
 
   
 
@@ -2257,13 +2270,13 @@ ALTER TABLE public.master_01
 
   
 
-    CREATE TABLE "public.447_reviews" PARTITION OF public.master_04
-    FOR VALUES FROM ('4470001') TO ('4480001');
+    CREATE TABLE "public.448_reviews" PARTITION OF public.master_04
+    FOR VALUES FROM ('4480001') TO ('4490001');
 
   
 
-    CREATE TABLE "public.448_reviews" PARTITION OF public.master_04
-    FOR VALUES FROM ('4480001') TO ('4490001');
+    CREATE TABLE "public.447_reviews" PARTITION OF public.master_04
+    FOR VALUES FROM ('4470001') TO ('4480001');
 
   
 
@@ -3977,18 +3990,8 @@ ALTER TABLE public.master_01
 
   
 
-    CREATE TABLE "public.790_reviews" PARTITION OF public.master_04
-    FOR VALUES FROM ('7900001') TO ('7910001');
-
-  
-
     CREATE TABLE "public.794_reviews" PARTITION OF public.master_04
     FOR VALUES FROM ('7940001') TO ('7950001');
-
-  
-
-    CREATE TABLE "public.796_reviews" PARTITION OF public.master_04
-    FOR VALUES FROM ('7960001') TO ('7970001');
 
   
 
@@ -3997,18 +4000,8 @@ ALTER TABLE public.master_01
 
   
 
-    CREATE TABLE "public.791_reviews" PARTITION OF public.master_04
-    FOR VALUES FROM ('7910001') TO ('7920001');
-
-  
-
-    CREATE TABLE "public.797_reviews" PARTITION OF public.master_04
-    FOR VALUES FROM ('7970001') TO ('7980001');
-
-  
-
-    CREATE TABLE "public.798_reviews" PARTITION OF public.master_04
-    FOR VALUES FROM ('7980001') TO ('7990001');
+    CREATE TABLE "public.796_reviews" PARTITION OF public.master_04
+    FOR VALUES FROM ('7960001') TO ('7970001');
 
   
 
@@ -4017,13 +4010,28 @@ ALTER TABLE public.master_01
 
   
 
-    CREATE TABLE "public.799_reviews" PARTITION OF public.master_04
-    FOR VALUES FROM ('7990001') TO ('8000001');
+    CREATE TABLE "public.797_reviews" PARTITION OF public.master_04
+    FOR VALUES FROM ('7970001') TO ('7980001');
 
   
 
-    CREATE TABLE "public.800_reviews" PARTITION OF public.master_04
-    FOR VALUES FROM ('8000001') TO ('8010001');
+    CREATE TABLE "public.790_reviews" PARTITION OF public.master_04
+    FOR VALUES FROM ('7900001') TO ('7910001');
+
+  
+
+    CREATE TABLE "public.798_reviews" PARTITION OF public.master_04
+    FOR VALUES FROM ('7980001') TO ('7990001');
+
+  
+
+    CREATE TABLE "public.791_reviews" PARTITION OF public.master_04
+    FOR VALUES FROM ('7910001') TO ('7920001');
+
+  
+
+    CREATE TABLE "public.799_reviews" PARTITION OF public.master_04
+    FOR VALUES FROM ('7990001') TO ('8000001');
 
   
 
@@ -4032,13 +4040,18 @@ ALTER TABLE public.master_01
 
   
 
-    CREATE TABLE "public.804_reviews" PARTITION OF public.master_04
-    FOR VALUES FROM ('8040001') TO ('8050001');
+    CREATE TABLE "public.800_reviews" PARTITION OF public.master_04
+    FOR VALUES FROM ('8000001') TO ('8010001');
 
   
 
-    CREATE TABLE "public.805_reviews" PARTITION OF public.master_04
-    FOR VALUES FROM ('8050001') TO ('8060001');
+    CREATE TABLE "public.803_reviews" PARTITION OF public.master_04
+    FOR VALUES FROM ('8030001') TO ('8040001');
+
+  
+
+    CREATE TABLE "public.804_reviews" PARTITION OF public.master_04
+    FOR VALUES FROM ('8040001') TO ('8050001');
 
   
 
@@ -4047,8 +4060,8 @@ ALTER TABLE public.master_01
 
   
 
-    CREATE TABLE "public.803_reviews" PARTITION OF public.master_04
-    FOR VALUES FROM ('8030001') TO ('8040001');
+    CREATE TABLE "public.805_reviews" PARTITION OF public.master_04
+    FOR VALUES FROM ('8050001') TO ('8060001');
 
   
 
@@ -4072,18 +4085,13 @@ ALTER TABLE public.master_01
 
   
 
-    CREATE TABLE "public.811_reviews" PARTITION OF public.master_04
-    FOR VALUES FROM ('8110001') TO ('8120001');
-
-  
-
     CREATE TABLE "public.809_reviews" PARTITION OF public.master_04
     FOR VALUES FROM ('8090001') TO ('8100001');
 
   
 
-    CREATE TABLE "public.812_reviews" PARTITION OF public.master_04
-    FOR VALUES FROM ('8120001') TO ('8130001');
+    CREATE TABLE "public.811_reviews" PARTITION OF public.master_04
+    FOR VALUES FROM ('8110001') TO ('8120001');
 
   
 
@@ -4092,13 +4100,18 @@ ALTER TABLE public.master_01
 
   
 
-    CREATE TABLE "public.814_reviews" PARTITION OF public.master_04
-    FOR VALUES FROM ('8140001') TO ('8150001');
+    CREATE TABLE "public.812_reviews" PARTITION OF public.master_04
+    FOR VALUES FROM ('8120001') TO ('8130001');
 
   
 
     CREATE TABLE "public.815_reviews" PARTITION OF public.master_04
     FOR VALUES FROM ('8150001') TO ('8160001');
+
+  
+
+    CREATE TABLE "public.814_reviews" PARTITION OF public.master_04
+    FOR VALUES FROM ('8140001') TO ('8150001');
 
   
 
@@ -4297,13 +4310,13 @@ ALTER TABLE public.master_01
 
   
 
-    CREATE TABLE "public.855_reviews" PARTITION OF public.master_04
-    FOR VALUES FROM ('8550001') TO ('8560001');
+    CREATE TABLE "public.856_reviews" PARTITION OF public.master_04
+    FOR VALUES FROM ('8560001') TO ('8570001');
 
   
 
-    CREATE TABLE "public.856_reviews" PARTITION OF public.master_04
-    FOR VALUES FROM ('8560001') TO ('8570001');
+    CREATE TABLE "public.855_reviews" PARTITION OF public.master_04
+    FOR VALUES FROM ('8550001') TO ('8560001');
 
   
 
@@ -4322,13 +4335,13 @@ ALTER TABLE public.master_01
 
   
 
-    CREATE TABLE "public.860_reviews" PARTITION OF public.master_04
-    FOR VALUES FROM ('8600001') TO ('8610001');
+    CREATE TABLE "public.861_reviews" PARTITION OF public.master_04
+    FOR VALUES FROM ('8610001') TO ('8620001');
 
   
 
-    CREATE TABLE "public.861_reviews" PARTITION OF public.master_04
-    FOR VALUES FROM ('8610001') TO ('8620001');
+    CREATE TABLE "public.860_reviews" PARTITION OF public.master_04
+    FOR VALUES FROM ('8600001') TO ('8610001');
 
   
 
@@ -4347,18 +4360,13 @@ ALTER TABLE public.master_01
 
   
 
-    CREATE TABLE "public.865_reviews" PARTITION OF public.master_04
-    FOR VALUES FROM ('8650001') TO ('8660001');
-
-  
-
     CREATE TABLE "public.866_reviews" PARTITION OF public.master_04
     FOR VALUES FROM ('8660001') TO ('8670001');
 
   
 
-    CREATE TABLE "public.867_reviews" PARTITION OF public.master_04
-    FOR VALUES FROM ('8670001') TO ('8680001');
+    CREATE TABLE "public.865_reviews" PARTITION OF public.master_04
+    FOR VALUES FROM ('8650001') TO ('8660001');
 
   
 
@@ -4367,13 +4375,13 @@ ALTER TABLE public.master_01
 
   
 
-    CREATE TABLE "public.869_reviews" PARTITION OF public.master_04
-    FOR VALUES FROM ('8690001') TO ('8700001');
+    CREATE TABLE "public.867_reviews" PARTITION OF public.master_04
+    FOR VALUES FROM ('8670001') TO ('8680001');
 
   
 
-    CREATE TABLE "public.870_reviews" PARTITION OF public.master_04
-    FOR VALUES FROM ('8700001') TO ('8710001');
+    CREATE TABLE "public.869_reviews" PARTITION OF public.master_04
+    FOR VALUES FROM ('8690001') TO ('8700001');
 
   
 
@@ -4382,8 +4390,8 @@ ALTER TABLE public.master_01
 
   
 
-    CREATE TABLE "public.872_reviews" PARTITION OF public.master_04
-    FOR VALUES FROM ('8720001') TO ('8730001');
+    CREATE TABLE "public.870_reviews" PARTITION OF public.master_04
+    FOR VALUES FROM ('8700001') TO ('8710001');
 
   
 
@@ -4392,8 +4400,18 @@ ALTER TABLE public.master_01
 
   
 
+    CREATE TABLE "public.872_reviews" PARTITION OF public.master_04
+    FOR VALUES FROM ('8720001') TO ('8730001');
+
+  
+
     CREATE TABLE "public.874_reviews" PARTITION OF public.master_04
     FOR VALUES FROM ('8740001') TO ('8750001');
+
+  
+
+    CREATE TABLE "public.876_reviews" PARTITION OF public.master_04
+    FOR VALUES FROM ('8760001') TO ('8770001');
 
   
 
@@ -4404,11 +4422,6 @@ ALTER TABLE public.master_01
 
     CREATE TABLE "public.877_reviews" PARTITION OF public.master_04
     FOR VALUES FROM ('8770001') TO ('8780001');
-
-  
-
-    CREATE TABLE "public.876_reviews" PARTITION OF public.master_04
-    FOR VALUES FROM ('8760001') TO ('8770001');
 
   
 
@@ -4432,13 +4445,13 @@ ALTER TABLE public.master_01
 
   
 
-    CREATE TABLE "public.883_reviews" PARTITION OF public.master_04
-    FOR VALUES FROM ('8830001') TO ('8840001');
+    CREATE TABLE "public.881_reviews" PARTITION OF public.master_04
+    FOR VALUES FROM ('8810001') TO ('8820001');
 
   
 
-    CREATE TABLE "public.881_reviews" PARTITION OF public.master_04
-    FOR VALUES FROM ('8810001') TO ('8820001');
+    CREATE TABLE "public.883_reviews" PARTITION OF public.master_04
+    FOR VALUES FROM ('8830001') TO ('8840001');
 
   
 
@@ -4452,6 +4465,11 @@ ALTER TABLE public.master_01
 
   
 
+    CREATE TABLE "public.887_reviews" PARTITION OF public.master_04
+    FOR VALUES FROM ('8870001') TO ('8880001');
+
+  
+
     CREATE TABLE "public.886_reviews" PARTITION OF public.master_04
     FOR VALUES FROM ('8860001') TO ('8870001');
 
@@ -4462,18 +4480,13 @@ ALTER TABLE public.master_01
 
   
 
-    CREATE TABLE "public.887_reviews" PARTITION OF public.master_04
-    FOR VALUES FROM ('8870001') TO ('8880001');
+    CREATE TABLE "public.890_reviews" PARTITION OF public.master_04
+    FOR VALUES FROM ('8900001') TO ('8910001');
 
   
 
     CREATE TABLE "public.889_reviews" PARTITION OF public.master_04
     FOR VALUES FROM ('8890001') TO ('8900001');
-
-  
-
-    CREATE TABLE "public.890_reviews" PARTITION OF public.master_04
-    FOR VALUES FROM ('8900001') TO ('8910001');
 
   
 
@@ -4489,6 +4502,11 @@ ALTER TABLE public.master_01
 
     CREATE TABLE "public.893_reviews" PARTITION OF public.master_04
     FOR VALUES FROM ('8930001') TO ('8940001');
+
+  
+
+    CREATE TABLE "public.896_reviews" PARTITION OF public.master_04
+    FOR VALUES FROM ('8960001') TO ('8970001');
 
   
 
@@ -4512,23 +4530,13 @@ ALTER TABLE public.master_01
 
   
 
-    CREATE TABLE "public.899_reviews" PARTITION OF public.master_04
-    FOR VALUES FROM ('8990001') TO ('9000001');
-
-  
-
-    CREATE TABLE "public.896_reviews" PARTITION OF public.master_04
-    FOR VALUES FROM ('8960001') TO ('8970001');
-
-  
-
     CREATE TABLE "public.901_reviews" PARTITION OF public.master_04
     FOR VALUES FROM ('9010001') TO ('9020001');
 
   
 
-    CREATE TABLE "public.902_reviews" PARTITION OF public.master_04
-    FOR VALUES FROM ('9020001') TO ('9030001');
+    CREATE TABLE "public.899_reviews" PARTITION OF public.master_04
+    FOR VALUES FROM ('8990001') TO ('9000001');
 
   
 
@@ -4537,13 +4545,18 @@ ALTER TABLE public.master_01
 
   
 
+    CREATE TABLE "public.902_reviews" PARTITION OF public.master_04
+    FOR VALUES FROM ('9020001') TO ('9030001');
+
+  
+
     CREATE TABLE "public.903_reviews" PARTITION OF public.master_04
     FOR VALUES FROM ('9030001') TO ('9040001');
 
   
 
-    CREATE TABLE "public.904_reviews" PARTITION OF public.master_04
-    FOR VALUES FROM ('9040001') TO ('9050001');
+    CREATE TABLE "public.906_reviews" PARTITION OF public.master_04
+    FOR VALUES FROM ('9060001') TO ('9070001');
 
   
 
@@ -4552,8 +4565,8 @@ ALTER TABLE public.master_01
 
   
 
-    CREATE TABLE "public.906_reviews" PARTITION OF public.master_04
-    FOR VALUES FROM ('9060001') TO ('9070001');
+    CREATE TABLE "public.904_reviews" PARTITION OF public.master_04
+    FOR VALUES FROM ('9040001') TO ('9050001');
 
   
 
@@ -4582,23 +4595,13 @@ ALTER TABLE public.master_01
 
   
 
-    CREATE TABLE "public.912_reviews" PARTITION OF public.master_04
-    FOR VALUES FROM ('9120001') TO ('9130001');
-
-  
-
     CREATE TABLE "public.913_reviews" PARTITION OF public.master_04
     FOR VALUES FROM ('9130001') TO ('9140001');
 
   
 
-    CREATE TABLE "public.914_reviews" PARTITION OF public.master_04
-    FOR VALUES FROM ('9140001') TO ('9150001');
-
-  
-
-    CREATE TABLE "public.915_reviews" PARTITION OF public.master_04
-    FOR VALUES FROM ('9150001') TO ('9160001');
+    CREATE TABLE "public.912_reviews" PARTITION OF public.master_04
+    FOR VALUES FROM ('9120001') TO ('9130001');
 
   
 
@@ -4607,8 +4610,13 @@ ALTER TABLE public.master_01
 
   
 
-    CREATE TABLE "public.917_reviews" PARTITION OF public.master_04
-    FOR VALUES FROM ('9170001') TO ('9180001');
+    CREATE TABLE "public.915_reviews" PARTITION OF public.master_04
+    FOR VALUES FROM ('9150001') TO ('9160001');
+
+  
+
+    CREATE TABLE "public.914_reviews" PARTITION OF public.master_04
+    FOR VALUES FROM ('9140001') TO ('9150001');
 
   
 
@@ -4617,13 +4625,13 @@ ALTER TABLE public.master_01
 
   
 
-    CREATE TABLE "public.919_reviews" PARTITION OF public.master_04
-    FOR VALUES FROM ('9190001') TO ('9200001');
+    CREATE TABLE "public.917_reviews" PARTITION OF public.master_04
+    FOR VALUES FROM ('9170001') TO ('9180001');
 
   
 
-    CREATE TABLE "public.920_reviews" PARTITION OF public.master_04
-    FOR VALUES FROM ('9200001') TO ('9210001');
+    CREATE TABLE "public.919_reviews" PARTITION OF public.master_04
+    FOR VALUES FROM ('9190001') TO ('9200001');
 
   
 
@@ -4632,8 +4640,8 @@ ALTER TABLE public.master_01
 
   
 
-    CREATE TABLE "public.922_reviews" PARTITION OF public.master_04
-    FOR VALUES FROM ('9220001') TO ('9230001');
+    CREATE TABLE "public.920_reviews" PARTITION OF public.master_04
+    FOR VALUES FROM ('9200001') TO ('9210001');
 
   
 
@@ -4642,18 +4650,23 @@ ALTER TABLE public.master_01
 
   
 
+    CREATE TABLE "public.922_reviews" PARTITION OF public.master_04
+    FOR VALUES FROM ('9220001') TO ('9230001');
+
+  
+
     CREATE TABLE "public.924_reviews" PARTITION OF public.master_04
     FOR VALUES FROM ('9240001') TO ('9250001');
 
   
 
-    CREATE TABLE "public.925_reviews" PARTITION OF public.master_04
-    FOR VALUES FROM ('9250001') TO ('9260001');
+    CREATE TABLE "public.926_reviews" PARTITION OF public.master_04
+    FOR VALUES FROM ('9260001') TO ('9270001');
 
   
 
-    CREATE TABLE "public.926_reviews" PARTITION OF public.master_04
-    FOR VALUES FROM ('9260001') TO ('9270001');
+    CREATE TABLE "public.925_reviews" PARTITION OF public.master_04
+    FOR VALUES FROM ('9250001') TO ('9260001');
 
   
 
@@ -4672,6 +4685,11 @@ ALTER TABLE public.master_01
 
   
 
+    CREATE TABLE "public.932_reviews" PARTITION OF public.master_04
+    FOR VALUES FROM ('9320001') TO ('9330001');
+
+  
+
     CREATE TABLE "public.930_reviews" PARTITION OF public.master_04
     FOR VALUES FROM ('9300001') TO ('9310001');
 
@@ -4679,11 +4697,6 @@ ALTER TABLE public.master_01
 
     CREATE TABLE "public.931_reviews" PARTITION OF public.master_04
     FOR VALUES FROM ('9310001') TO ('9320001');
-
-  
-
-    CREATE TABLE "public.932_reviews" PARTITION OF public.master_04
-    FOR VALUES FROM ('9320001') TO ('9330001');
 
   
 
@@ -4697,18 +4710,13 @@ ALTER TABLE public.master_01
 
   
 
-    CREATE TABLE "public.935_reviews" PARTITION OF public.master_04
-    FOR VALUES FROM ('9350001') TO ('9360001');
-
-  
-
     CREATE TABLE "public.936_reviews" PARTITION OF public.master_04
     FOR VALUES FROM ('9360001') TO ('9370001');
 
   
 
-    CREATE TABLE "public.937_reviews" PARTITION OF public.master_04
-    FOR VALUES FROM ('9370001') TO ('9380001');
+    CREATE TABLE "public.935_reviews" PARTITION OF public.master_04
+    FOR VALUES FROM ('9350001') TO ('9360001');
 
   
 
@@ -4722,13 +4730,18 @@ ALTER TABLE public.master_01
 
   
 
-    CREATE TABLE "public.940_reviews" PARTITION OF public.master_04
-    FOR VALUES FROM ('9400001') TO ('9410001');
+    CREATE TABLE "public.937_reviews" PARTITION OF public.master_04
+    FOR VALUES FROM ('9370001') TO ('9380001');
 
   
 
     CREATE TABLE "public.941_reviews" PARTITION OF public.master_04
     FOR VALUES FROM ('9410001') TO ('9420001');
+
+  
+
+    CREATE TABLE "public.940_reviews" PARTITION OF public.master_04
+    FOR VALUES FROM ('9400001') TO ('9410001');
 
   
 
@@ -4937,13 +4950,13 @@ ALTER TABLE public.master_01
 
   
 
-    CREATE TABLE "public.983_reviews" PARTITION OF public.master_04
-    FOR VALUES FROM ('9830001') TO ('9840001');
+    CREATE TABLE "public.984_reviews" PARTITION OF public.master_04
+    FOR VALUES FROM ('9840001') TO ('9850001');
 
   
 
-    CREATE TABLE "public.984_reviews" PARTITION OF public.master_04
-    FOR VALUES FROM ('9840001') TO ('9850001');
+    CREATE TABLE "public.983_reviews" PARTITION OF public.master_04
+    FOR VALUES FROM ('9830001') TO ('9840001');
 
   
 
@@ -4957,13 +4970,18 @@ ALTER TABLE public.master_01
 
   
 
+    CREATE TABLE "public.988_reviews" PARTITION OF public.master_04
+    FOR VALUES FROM ('9880001') TO ('9890001');
+
+  
+
     CREATE TABLE "public.987_reviews" PARTITION OF public.master_04
     FOR VALUES FROM ('9870001') TO ('9880001');
 
   
 
-    CREATE TABLE "public.988_reviews" PARTITION OF public.master_04
-    FOR VALUES FROM ('9880001') TO ('9890001');
+    CREATE TABLE "public.989_reviews" PARTITION OF public.master_04
+    FOR VALUES FROM ('9890001') TO ('9900001');
 
   
 
@@ -4977,18 +4995,13 @@ ALTER TABLE public.master_01
 
   
 
-    CREATE TABLE "public.989_reviews" PARTITION OF public.master_04
-    FOR VALUES FROM ('9890001') TO ('9900001');
+    CREATE TABLE "public.993_reviews" PARTITION OF public.master_04
+    FOR VALUES FROM ('9930001') TO ('9940001');
 
   
 
     CREATE TABLE "public.992_reviews" PARTITION OF public.master_04
     FOR VALUES FROM ('9920001') TO ('9930001');
-
-  
-
-    CREATE TABLE "public.993_reviews" PARTITION OF public.master_04
-    FOR VALUES FROM ('9930001') TO ('9940001');
 
   
 

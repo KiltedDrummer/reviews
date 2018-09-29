@@ -1,8 +1,5 @@
 const fs = require('fs');
 
-// set upper bound of entries
-// const entries = 10000000; // 10M primary entries
-
 // set how many handles per file
 const chunk = 1000000; // 1M primaries per file
 
@@ -10,6 +7,18 @@ let start = 1;
 for (let i = 0; i < 10; i += 1) {
   const fileName = `${i}_csvGen.csv`;
   const filler = `
+/*
+********************************************************************************
+********************************************************************************
+*****                                                                      *****
+*****                  Generated From csvGenGenerator                      *****
+*****                                                                      *****
+                  DATA GENERATION FOR listings ${i * 1000000} - ${(i + 1) * 1000000}  
+*****                                                                      *****
+********************************************************************************
+********************************************************************************
+*/
+
 const faker = require('faker');
 const fs = require('fs');
 const moment = require('moment');
