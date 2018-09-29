@@ -1,53 +1,54 @@
-const faker = require('faker');
 const fs = require('fs');
-const moment = require('moment');
+const async = require('async');
+const { exec } = require('child_process');
 
-const date = new Date();
-console.log('Starting Generation');
 
-const reviews = [];
-const users = [];
-const userCount = 100;
+console.time('Starting Generation');
 
-for (let i = 1; i <= 10000000; i += 1) { // 500 reviews total
-  const review = {
-    id: i,
-    review: faker.lorem.paragraph(),
-    created: moment.utc((faker.date.past())).format("'MMMM YYYY"),
-    userId: faker.random.number({
-      min: 1,
-      max: userCount,
-    }),
-  };
-  reviews.push(review);
+const scriptsFolder = './DataGen/csvScripts'; // add your scripts to folder named scripts
+let files = fs.readdirSync(scriptsFolder); // reading files from folders
+files = files.filter(file => file[0] !== '.');
+// const funcs = files.map(file => console.log(path.join(__dirname,`/DataGen/Scripts/${file}`)));
+const funcs = files.map(file => exec.bind(null, `node ./DataGen/csvScripts/${file}`));
+// const funcs = [exec.bind(null, `node ./DataGen/Scripts/${files[0]}`)];
+// console.log(funcs);
+
+const getResults = (err, data) => {
+  console.log('GET RESULTS');
+  if (err) {
+    return console.log(err);
+  }
+  // console.timeEnd('Starting Generation');
+  const results = data.map(lines => lines.join(''));
+  console.timeEnd('Starting Generation');
+  console.log(results);
+  return results;
+};
+
+// to run your scripts in parallel use
+// funcs[0]();
+
+// async.parallel(funcs.slice(0, 10), (err, data) => {
+//   getResults(err, data);
+//   async.parallel(funcs.slice(10), getResults);
+// });
+
+
+
+const partitions = [];
+for (let i = 0; i < 10; i += 1) {
+  if (i % 2 === 0) {
+    partitions.push([funcs[i]]);
+  } else {
+    partitions[Math.floor(i / 2)].push(funcs[i]);
+  }
 }
 
+console.log(partitions);
+// async.parallel(partitions[0], getResults);
 
-for (let i = 1; i <= userCount; i += 1) {
-  const user = {
-    id: i,
-    name: faker.name.firstName(),
-    photo: faker.image.avatar(),
-  };
-  users.push(user);
-}
+async.each(partitions, partFuncs => async.parallel(partFuncs), getResults);
 
-fs.writeFile('./fakeReviews.js', JSON.stringify(reviews),
-  (err) => {
-    if (err) {
-      return err;
-    }
-    return 'The file was saved!';
-  });
-
-fs.writeFile('./fakeUsers.js', JSON.stringify(users),
-  (err) => {
-    if (err) {
-      return err;
-    }
-    return 'The file was saved!';
-  });
-
-const time = new Date() - date;
-
-console.log(`Data Generated! in ${time / 1000} seconds`);
+// async.each(openFiles, saveFile, function (err) {
+//   // if any of the saves produced an error, err would equal that error
+// });
