@@ -1,0 +1,34 @@
+const faker = require('faker');
+const fs = require('fs');
+const moment = require('moment');
+
+const listings = [];
+for (let i = 1000001; i <= 150000; i += 1) { // 1000 listings
+  const numberOfReviews = faker.random.number({
+    min: 1,
+    max: 20,
+  });
+
+  for (let j = 1; j <= numberOfReviews; j += 1) {
+    const review = {
+      id: j,
+      listingId: i,
+      review: faker.lorem.paragraph(),
+      created: moment.utc((faker.date.past())).format("'MMMM YYYY"),
+      userId: faker.random.number({
+        min: 1,
+        max: 100,
+      }),
+    };
+
+    listings.push(review);
+  }
+}
+
+fs.writeFile('./DataGen/GeneratedData/1001_1500_Reviews.json', JSON.stringify(listings),
+  (err) => {
+    if (err) {
+      return err;
+    }
+    console.log('1M - 1.5M were saved!');
+  });
